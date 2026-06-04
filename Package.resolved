@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "spotlightsdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maulikmintoak/SpotLightSDK",
+      "state" : {
+        "revision" : "b6c280c0fd0e223a6e71b79436f683c2da66fb36",
+        "version" : "0.1.3"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",

@@ -11,6 +11,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/livekit/client-sdk-swift.git", exact: "2.14.1"),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.19.0"),
+        .package(url: "https://github.com/maulikmintoak/SpotLightSDK", from: "0.1.3"),
     ],
     targets: [
         .target(
@@ -18,6 +19,7 @@ let package = Package(
             dependencies: [
                 .product(name: "LiveKit", package: "client-sdk-swift"),
                 .product(name: "SDWebImage", package: "SDWebImage"),
+                .product(name: "SpotLightSDK", package: "SpotLightSDK"),
             ],
             path: "Sources/UniversalSearchSDK",
             exclude: [
