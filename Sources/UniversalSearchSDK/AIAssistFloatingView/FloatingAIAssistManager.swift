@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SpotLightSDK
 
 final class FloatingAIAssistManager {
 
