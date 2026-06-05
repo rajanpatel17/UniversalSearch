@@ -128,4 +128,16 @@ public final class UniversalSearchManager {
     @MainActor public func spotlightAIAssistViewed() {
         FloatingAIAssistManager.shared.showSpotlightIfNeeded()
     }
+    
+    /// Clears the session, ends any active LiveKit calls, and cleans up resources.
+    /// Should be called when the user logouts or the session expires.
+    @MainActor public func callEndAIAssist() {
+        self.sessionData = nil
+        self.hideFloatingAIAssist()
+        Task {
+            await LiveKitCallManager.shared.disconnect()
+            SmartBarWebViewManager.shared.clearCachedWebViewIfAllowed()
+        }
+    }
+
 }
