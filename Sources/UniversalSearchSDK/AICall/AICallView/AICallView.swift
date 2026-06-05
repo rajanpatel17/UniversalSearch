@@ -252,7 +252,7 @@ class AICallView: UIViewController, XIBed {
         navContainer.setNavigationBarShadow()
         lblNavTitle.configureLabel(color: .textColorDark, font: AppFonts.FONT_SEMIBOLD(size: 16))
         
-        let bundle = Bundle(for: AICallView.self)
+        let bundle = UniversalSearchManager.bundle
         let unmutedImage = UIImage(named: "icn_unmute", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysOriginal)
         self.btnMute.setImage(unmutedImage, for: .normal)
         self.btnScreenShare.setImage(UIImage(named: "ic_screenshare", in: bundle, compatibleWith: nil), for: .normal)
@@ -394,7 +394,7 @@ class AICallView: UIViewController, XIBed {
         endBtn.imageEdgeInsets = .zero
         endBtn.titleEdgeInsets = .zero
 
-        if let icon = UIImage(named: "ic_endcall")?.withRenderingMode(.alwaysTemplate) {
+        if let icon = UIImage(named: "ic_endcall", in: UniversalSearchManager.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) {
             endBtn.setImage(icon, for: .normal)
         }
         endBtn.tintColor = .white
@@ -600,7 +600,7 @@ class AICallView: UIViewController, XIBed {
 
         // Show loader GIF
         UIView.transition(with: imgLoader, duration: 0.25, options: .transitionCrossDissolve) {
-            guard let url = Bundle.main.url(forResource: "ic_connecting", withExtension: "gif") else { return }
+            guard let url = UniversalSearchManager.bundle.url(forResource: "ic_connecting", withExtension: "gif") else { return }
             self.imgLoader.sd_setImage(with: url)
         }
         imgLoader.isHidden = false
@@ -679,7 +679,7 @@ class AICallView: UIViewController, XIBed {
         // Show loader
         imgLoader.isHidden = false
         UIView.transition(with: imgLoader, duration: 0.25, options: .transitionCrossDissolve) {
-            guard let url = Bundle.main.url(forResource: "ic_connecting", withExtension: "gif") else { return }
+            guard let url = UniversalSearchManager.bundle.url(forResource: "ic_connecting", withExtension: "gif") else { return }
             self.imgLoader.sd_setImage(with: url)
         }
         UIView.animate(withDuration: 0.2) { self.imgLoader.alpha = 1 }
@@ -982,7 +982,7 @@ class AICallView: UIViewController, XIBed {
         UIView.animate(withDuration: 0.1, animations: {
             button.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { _ in
-            let image = UIImage(named: imageName, in: #bundle, compatibleWith: nil)?.withRenderingMode(.alwaysOriginal)
+            let image = UIImage(named: imageName, in: UniversalSearchManager.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysOriginal)
             button.setImage(image, for: .normal)
             UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6,
                            initialSpringVelocity: 0.5, options: []) {

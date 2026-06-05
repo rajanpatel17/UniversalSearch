@@ -11,7 +11,7 @@ import UIKit
 class InstaQrAlertViewControllerViewController: UIViewController {
     
     static func instantiate(backColor: String, iconImage: String, titleColor: String, titleData: String, descData: String, attributedInstruction: String = "", buttonTitle1: String, buttonTitle2: String, hideCloseButton: Bool = false) -> InstaQrAlertViewControllerViewController {
-        let bundle = Bundle(for: Self.self)
+        let bundle = UniversalSearchManager.bundle
         let vc = InstaQrAlertViewControllerViewController(nibName: String(describing: self), bundle: bundle)
         vc.backColor = backColor
         vc.iconImage = iconImage
@@ -26,7 +26,7 @@ class InstaQrAlertViewControllerViewController: UIViewController {
     }
     
     static func instantiateNew(backColor: String, iconImage: String, titleColor: String, titleData: String, descData: String, buttonTitle1: String, buttonTitle2: String, isFromLogin:Bool) -> InstaQrAlertViewControllerViewController {
-        let bundle = Bundle(for: Self.self)
+        let bundle = UniversalSearchManager.bundle
         let vc = InstaQrAlertViewControllerViewController(nibName: String(describing: self), bundle: bundle)
         vc.backColor = backColor
         vc.iconImage = iconImage
@@ -40,7 +40,7 @@ class InstaQrAlertViewControllerViewController: UIViewController {
     }
     
     static func instantiateInternetError(isForInternetError: Bool) -> InstaQrAlertViewControllerViewController {
-        let bundle = Bundle(for: Self.self)
+        let bundle = UniversalSearchManager.bundle
         let vc = InstaQrAlertViewControllerViewController(nibName: String(describing: self), bundle: bundle)
         vc.isForInternetError = isForInternetError
         return vc
@@ -94,16 +94,16 @@ class InstaQrAlertViewControllerViewController: UIViewController {
         self.closeButton.isHidden = hideCloseButton
         if iconImage == PopupImageName.failIcon.rawValue {
             if !iconImage.isEmpty {
-                self.titleImageView.image = UIImage(named: iconImage,in: Bundle.init(for: Self.self), compatibleWith: nil)
+                self.titleImageView.image = UIImage(named: iconImage,in: UniversalSearchManager.bundle, compatibleWith: nil)
             } else {
                 self.titleImageView.image = nil // Clear image if name is empty
             }
         } else {
-            self.titleImageView.image = UIImage(named: "alertIconNew",in: Bundle.init(for: Self.self), compatibleWith: nil)
+            self.titleImageView.image = UIImage(named: "alertIconNew",in: UniversalSearchManager.bundle, compatibleWith: nil)
             self.titleImageView.image = self.titleImageView.image?.withRenderingMode(.alwaysTemplate)
             self.titleImageView.tintColor = UIColor.hex(titleColor)
         }
-        self.closeButton.setImage(UIImage.init(named: "imgRedClose",in: Bundle.init(for: Self.self), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.closeButton.setImage(UIImage.init(named: "imgRedClose",in: UniversalSearchManager.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
         closeButton.tintColor = UIColor.hex(titleColor)
 
         self.titleLabel.textColor = UIColor.hex(titleColor)
@@ -135,8 +135,8 @@ class InstaQrAlertViewControllerViewController: UIViewController {
             self.containerView.backgroundColor = UIColor.commonSdkBackColor
             self.instructionView.isHidden = true
             self.button2.isHidden = true
-            self.closeButton.setImage(UIImage.init(named: "imgRedClose",in: Bundle.init(for: Self.self), compatibleWith: nil), for: .normal)
-            self.titleImageView.image = UIImage.init(named: "imgRedAlert",in: Bundle.init(for: Self.self), compatibleWith: nil)
+            self.closeButton.setImage(UIImage.init(named: "imgRedClose",in: UniversalSearchManager.bundle, compatibleWith: nil), for: .normal)
+            self.titleImageView.image = UIImage.init(named: "imgRedAlert",in: UniversalSearchManager.bundle, compatibleWith: nil)
         }
     }
 

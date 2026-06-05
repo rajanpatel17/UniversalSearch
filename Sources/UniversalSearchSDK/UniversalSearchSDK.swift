@@ -75,7 +75,11 @@ public final class UniversalSearchManager {
     public static let shared = UniversalSearchManager()
     
     public static var bundle: Bundle {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
         return Bundle(for: UniversalSearchManager.self)
+        #endif
     }
     
     public weak var delegate: UniversalSearchDelegate?
